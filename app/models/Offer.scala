@@ -7,11 +7,11 @@ case class Offer(owner: User,
                  timeIn: LocalDate,
                  timeOut: LocalDate,
                  slotsAvailable: Int,
-                 status: Status)
+                 status: OfferStatus)
 
-sealed trait Status
-case object Open extends Status
-case object InProgress extends Status
-case object Cancelled extends Status
-case object Complete extends Status
+sealed trait OfferStatus
+case object OfferOpen extends OfferStatus
+case object OfferInProgress extends OfferStatus
+case object OfferCancelled extends OfferStatus
+case object OfferComplete extends OfferStatus
 

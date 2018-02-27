@@ -1,11 +1,14 @@
 package controllers.repositories
 
 import org.scalatest.WordSpec
+import repositories.OfferRepository
 
 class OfferRepositoryTest extends WordSpec {
 
   "Calling listOffers" should {
     "return all offers" in {
+      val offerRepository = new OfferRepository()
+
 
     }
   }

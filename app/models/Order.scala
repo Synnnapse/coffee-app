@@ -3,11 +3,11 @@ package models
 case class Order(owner: User,
                  offer: Offer,
                  description: String,
-                 status: Status
+                 status: OrderStatus
                 )
 
-sealed trait Status
-case object Pending extends Status
-case object Accepted extends Status
-case object Rejected extends Status
-case object Cancelled extends Status
+sealed trait OrderStatus
+case object OrderPending extends OrderStatus
+case object OrderAccepted extends OrderStatus
+case object OrderRejected extends OrderStatus
+case object OrderCancelled extends OrderStatus
