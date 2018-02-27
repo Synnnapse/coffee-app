@@ -40,8 +40,10 @@ class HomeController @Inject() (
     )
   }
 
-  def signout() = Action { implicit request: Request[AnyContent] =>
-    Redirect(routes.HomeController.login()).withNewSession
+  def signout() = AuthenticatedAction { implicit user => request =>
+    Future.successful {
+      Redirect(routes.HomeController.login()).withNewSession
+    }
   }
 
   def index() = AuthenticatedAction { implicit user => request =>
