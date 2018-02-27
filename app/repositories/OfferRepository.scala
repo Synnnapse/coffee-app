@@ -24,9 +24,6 @@ class OfferRepository {
 
   def getUsersWorkingOffer(user: User): Option[Offer] = {
     offers.find(x =>
-      x._2.owner == user && (x._2.status.contains(OfferOpen) || x._2.status.isEmpty)) map {
-      offer =>
-        offer._2
-    }
+      x._2.owner == user && (x._2.status.contains(OfferOpen) || x._2.status.isEmpty)) map {_._2}
   }
 }
