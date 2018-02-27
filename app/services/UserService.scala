@@ -14,4 +14,8 @@ class UserService @Inject() (val userRepository: UserRepository) {
   def findUser(email: String): Option[User] = {
     userRepository.findUser(email)
   }
+
+  def findAndCheckPassword(email: String, password: String): Option[User] = {
+    userRepository.findUser(email).filter(_.password == password)
+  }
 }
