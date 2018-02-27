@@ -1,9 +1,11 @@
 package repositories
 
+import javax.inject.Singleton
 import models.User
+
 import scala.collection.mutable
 
-
+@Singleton
 class UserRepository {
 
   val records = mutable.HashMap.empty[String, User]

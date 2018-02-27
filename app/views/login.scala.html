@@ -1,0 +1,14 @@
+@import helper._
+
+@(loginForm: Form[LoginForm])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+
+@main("Login") {
+  <h1>Login</h1>
+
+  @form(action = routes.HomeController.processLogin()) {
+    @CSRF.formField
+    @inputText(loginForm("email"))
+    @inputPassword(loginForm("password"))
+    <input type="submit" class="button" value='@Messages("label.continue")' >
+  }
+}

@@ -1,24 +1,52 @@
 package controllers
 
 import javax.inject._
+import models.{LoginForm, User}
 import play.api._
+import play.api.data.Form
 import play.api.mvc._
+import play.api.data._
+import play.api.data.Forms._
+import play.api.data.validation.Constraints._
+import play.api.i18n.MessagesApi
+import play.api.i18n.I18nSupport
+import services.UserService
 
-/**
- * This controller creates an `Action` to handle HTTP requests to the
- * application's home page.
- */
+import scala.concurrent.Future
+
 @Singleton
-class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
+class HomeController @Inject() (
+  val cc: ControllerComponents,
+  override val messagesApi: MessagesApi,
+  val userService: UserService
+) extends AbstractController(cc) with I18nSupport with ControllerHelper {
 
-  /**
-   * Create an Action to render an HTML page.
-   *
-   * The configuration in the `routes` file means that this method
-   * will be called when the application receives a `GET` request with
-   * a path of `/`.
-   */
-  def index() = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.index())
+  val loginForm = Form(
+    mapping(
+      "email" -> email,
+      "password" -> nonEmptyText
+    )(LoginForm.apply)(LoginForm.unapply)
+  )
+
+  def login() = Action { implicit request: Request[AnyContent] =>
+    Ok(views.html.login(loginForm))
+  }
+
+  def processLogin() = Action { implicit request: Request[AnyContent] =>
+
+    loginForm.bindFromRequest.fold(
+      formWithErrors => {
+        BadRequest(views.html.login(formWithErrors))
+      },
+      loginForm => {
+        Redirect(routes.HomeController.index()).addingToSession("email" -> loginForm.email)
+      }
+    )
+  }
+
+  def index() = AuthenticatedAction { implicit user => request =>
+    Future.successful {
+      Ok(views.html.index())
+    }
   }
 }
