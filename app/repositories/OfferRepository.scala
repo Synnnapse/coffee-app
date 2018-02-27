@@ -1,17 +1,24 @@
 package repositories
 
-import models.Offer
+import models.{Offer, OfferOpen}
 
 import scala.collection.mutable
 
 class OfferRepository {
   private val offers = mutable.HashMap.empty[String, Offer]
 
-  def listOffers = ???
-  def putOffer(id: String, offer: Offer) = ???
-  def getOffer(id:String) = ???
-  def clearOffers = ???
+  def listOpenOffers: Seq[Offer] = {
+    offers.map( _._2 ).filter( _.status == OfferOpen ).toSeq
+  }
 
+  def putOffer(id: String, offer: Offer): Unit = {
+    offers(id) = offer
+  }
 
-
+  def getOffer(id:String): Option[Offer] = {
+    offers.get(id)
+  }
+  def clearOffers: Unit = {
+    offers.clear()
+  }
 }
