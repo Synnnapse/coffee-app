@@ -1,0 +1,31 @@
+* {
+  color: #795548; }
+
+.collection a.collection-item {
+  color: #795548; }
+
+.dropdown-content li > span {
+  color: #795548; }
+
+.btn i {
+  color: #fff; }
+
+.input-field input[type=text]:focus + label {
+  color: #795548 !important; }
+
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #795548 !important;
+  box-shadow: 0 1px 0 0 #795548 !important; }
+
+h1 {
+  font-size: 24px; }
+
+.collection .collection-item.avatar .secondary-content {
+  right: 35px; }
+
+.cross {
+  right: 5px !important; }
+
+.accepted {
+  display: none;
+  color: green; }

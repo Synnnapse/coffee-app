@@ -1,15 +1,11 @@
 package controllers
 
 import javax.inject._
-import models.{LoginForm, User}
-import play.api._
+import models.LoginForm
 import play.api.data.Form
-import play.api.mvc._
-import play.api.data._
 import play.api.data.Forms._
-import play.api.data.validation.Constraints._
-import play.api.i18n.MessagesApi
-import play.api.i18n.I18nSupport
+import play.api.i18n.{I18nSupport, MessagesApi}
+import play.api.mvc._
 import services.UserService
 
 import scala.concurrent.Future

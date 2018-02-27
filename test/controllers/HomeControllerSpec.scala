@@ -10,8 +10,6 @@ class HomeControllerSpec extends PlaySpec with GuiceOneAppPerTest with Injecting
 
   "Loading the index page" should {
 
-
-
     "redirect to login when no user is logged in" in {
       val request = FakeRequest(GET, "/")
       val r = route(app, request).get
