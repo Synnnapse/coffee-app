@@ -1,0 +1,28 @@
+@(selectOutletForm: Form[SelectOutletForm])(implicit request: RequestHeader, messagesProvider: MessagesProvider)
+@implicitFieldConstructor = @{ helper.FieldConstructor(bareField.f) }
+
+@import helper._
+
+
+@main("Login") {
+  <div class="container">
+    <div class="row">
+      <h1>Login</h1>
+    </div>
+    @form(action = routes.OfferController.processSelectOutlet()) {
+    @CSRF.formField
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              @inputText(selectOutletForm("outlet"))
+              <label for="outlet">Choose outlet</label>
+            </div>
+          </div>
+          <button id="submitOutlet" class="btn waves-effect waves-light brown" type="submit" value="Submit">@Messages("label.continue")</button>
+        </form>
+      </div>
+  </div>
+  }
+}
+

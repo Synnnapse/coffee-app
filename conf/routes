@@ -10,5 +10,10 @@ GET     /login                      controllers.HomeController.login
 POST    /login                      controllers.HomeController.processLogin
 GET     /sign-out                   controllers.HomeController.signout
 
+GET     /offers                     controllers.OfferController.listOpenOffers
+
+GET    /outlet                     controllers.OfferController.selectOutlet
+POST    /outlet                     controllers.OfferController.processSelectOutlet
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

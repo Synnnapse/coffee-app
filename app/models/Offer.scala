@@ -1,17 +1,23 @@
 package models
 
-import org.joda.time.LocalDate
+import java.util.UUID
 
-case class Offer(owner: User,
-                 outlet: String,
-                 timeIn: LocalDate,
-                 timeOut: LocalDate,
-                 slotsAvailable: Int,
-                 status: OfferStatus)
+import org.joda.time.LocalTime
+
+// TODO - add an id to each offer. Make a companion object for an offer that can generate ids
+
+case class Offer(
+                  owner: User,
+                  outlet: Option[String],
+                  timeIn: Option[LocalTime],
+                  timeOut: Option[LocalTime],
+                  slotsAvailable: Option[Int],
+                  status: Option[OfferStatus],
+                  id: String = UUID.randomUUID.toString
+)
 
 sealed trait OfferStatus
 case object OfferOpen extends OfferStatus
 case object OfferInProgress extends OfferStatus
 case object OfferCancelled extends OfferStatus
 case object OfferComplete extends OfferStatus
-
