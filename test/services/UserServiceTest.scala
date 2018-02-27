@@ -1,13 +1,13 @@
-package repositories
+package services
 
 import models.User
 import org.scalatest.WordSpec
+import repositories.UserRepository
 import org.scalatest.Matchers._
 
+class UserServiceTest extends WordSpec {
 
-class UserRepositoryTest extends WordSpec {
-
-  "Calling UserRepository.putUser" should {
+  "Calling UserService.putUser" should {
 
     "complete successfully" in {
       val userRepository = new UserRepository()
@@ -15,7 +15,7 @@ class UserRepositoryTest extends WordSpec {
     }
   }
 
-  "Calling UserRepository.findUser" should {
+  "Calling UserService.findUser" should {
 
     "return None when there is no user found" in {
       val userRepository = new UserRepository()
