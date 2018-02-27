@@ -6,8 +6,13 @@ import scala.collection.mutable
 
 class UserRepository {
 
-  private val records = mutable.HashMap.empty[String, User]
+  val records = mutable.HashMap.empty[String, User]
 
-  def createUser(user: User) = ???
-  def findUser(email: String) = ???
+  def putUser(email:String, user: User): Unit = {
+    records(user.email) = user
+  }
+
+  def findUser(email: String): Option[User] = {
+    records.get(email)
+  }
 }
