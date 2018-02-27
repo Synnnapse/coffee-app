@@ -44,7 +44,7 @@ class OfferRepositoryTest extends WordSpec {
     }
   }
 
-  "Calling listOffers" should {
+  "Calling listOpenOffers" should {
     "return all open offers" in {
       val offerRepository = new OfferRepository()
 
