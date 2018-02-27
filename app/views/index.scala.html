@@ -1,5 +1,24 @@
 @()
 
-@main("Welcome to Play") {
-  <h1>Welcome to Play!</h1>
+@main("4 Coffee") {
+  <div class="container">
+    <div class="row">
+      <img class="col s12" src="@routes.Assets.versioned("images/logo.png")" alt="4 Coffee Logo">
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <a class="waves-effect waves-light btn-large col s12 brown" href="runner/locations.html">I am going for coffee</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <a class="waves-effect waves-light btn-large col s12 brown" href="receiver/available-orders.html">I need coffee</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <p>Adam Fenwick <a id="signout" class="right" href="/sign-out">Sign out</a></p>
+      </div>
+    </div>
+  </div>
 }
